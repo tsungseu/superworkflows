@@ -1,0 +1,6 @@
+interface:
+  display_name: "Superworkflows Learn"
+  short_description: "Propose approval-controlled workflow learning"
+  default_prompt: "Use $learn to distill completed runs into independently reviewed, human-approved improvement proposals."
+policy:
+  allow_implicit_invocation: false

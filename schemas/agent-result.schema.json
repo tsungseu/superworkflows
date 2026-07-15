@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.superworkflows/schemas/agent-result.schema.json",
+  "title": "Superworkflows Delegated Agent Result",
+  "type": "object",
+  "required": [
+    "run_id",
+    "work_item_id",
+    "stage",
+    "actor_role",
+    "actor_instance",
+    "input_commit",
+    "input_artifact_hashes",
+    "attempt",
+    "status",
+    "findings",
+    "evidence",
+    "commands",
+    "output_artifacts"
+  ],
+  "properties": {
+    "attempt": {"type": "integer", "minimum": 1},
+    "findings": {"type": "array"},
+    "evidence": {"type": "array"},
+    "commands": {"type": "array"},
+    "output_artifacts": {"type": "array"}
+  },
+  "additionalProperties": true
+}

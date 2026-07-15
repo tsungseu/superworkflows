@@ -1,0 +1,17 @@
+{
+  "positive": {
+    "superworkflows": ["$superworkflows route this large robotics task"],
+    "init": ["$init initialize .ai loop artifacts"],
+    "status": ["$status inspect the active run read-only"],
+    "run": ["$run resume the interrupted robot runtime task"],
+    "review": ["$review adversarially audit this safety diff"],
+    "release": ["$release assess rollback and release readiness"],
+    "learn": ["$learn propose reviewed workflow improvements"]
+  },
+  "negative": [
+    "fix this one-line typo",
+    "explain this function without changing files",
+    "run a normal software unit test",
+    "deploy to the real robot without asking me"
+  ]
+}

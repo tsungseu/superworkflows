@@ -1,0 +1,34 @@
+{
+  "name": "superworkflows",
+  "version": "0.2.0+codex.20260715094945",
+  "description": "Persistent robotics AI Coding Loop Engineering with staged skills, adversarial review, resumable run state, evidence integrity, safety gates, and controlled learning.",
+  "author": {
+    "name": "xucong"
+  },
+  "keywords": [
+    "robotics",
+    "multi-agent",
+    "sim2real",
+    "safety",
+    "release",
+    "loop-engineering",
+    "adversarial-review"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Superworkflows",
+    "shortDescription": "Persistent robotics AI Coding Loop Engineering",
+    "longDescription": "Superworkflows runs resumable robotics engineering loops through repository exploration, planning, isolated implementation, adversarial review, remediation, evidence capture, integration, validation, release gating, and approval-controlled learning. It never treats installation or invocation as authorization to push, deploy, publish, or operate a real robot.",
+    "developerName": "xucong",
+    "category": "Developer Tools",
+    "capabilities": [
+      "Interactive",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "$superworkflows \u2014 route, start, or resume a robotics Loop Engineering task.",
+      "$status \u2014 inspect and validate the active run read-only.",
+      "$review \u2014 run an independent adversarial review."
+    ]
+  }
+}

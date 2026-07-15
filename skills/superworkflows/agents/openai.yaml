@@ -1,0 +1,6 @@
+interface:
+  display_name: "Superworkflows"
+  short_description: "Route robotics Loop Engineering workflows"
+  default_prompt: "Use $superworkflows to route this robotics task into the correct persistent Loop Engineering workflow."
+policy:
+  allow_implicit_invocation: false

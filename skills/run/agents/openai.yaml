@@ -1,0 +1,6 @@
+interface:
+  display_name: "Superworkflows Run"
+  short_description: "Start or resume a persistent robotics loop"
+  default_prompt: "Use $run to start or resume this task as a persistent, evidence-backed robotics engineering loop."
+policy:
+  allow_implicit_invocation: false

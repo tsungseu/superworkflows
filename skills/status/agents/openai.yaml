@@ -1,0 +1,6 @@
+interface:
+  display_name: "Superworkflows Status"
+  short_description: "Inspect resumable workflow state read-only"
+  default_prompt: "Use $status to inspect and validate the current Loop Engineering run without changing it."
+policy:
+  allow_implicit_invocation: false

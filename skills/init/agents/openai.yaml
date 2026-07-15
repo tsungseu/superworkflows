@@ -1,0 +1,6 @@
+interface:
+  display_name: "Superworkflows Init"
+  short_description: "Initialize portable Loop Engineering state"
+  default_prompt: "Use $init to initialize or audit Loop Engineering in this repository."
+policy:
+  allow_implicit_invocation: false

@@ -1,0 +1,6 @@
+interface:
+  display_name: "Superworkflows Release"
+  short_description: "Gate integration, rollback, and release actions"
+  default_prompt: "Use $release to assess release readiness and perform only separately authorized release actions."
+policy:
+  allow_implicit_invocation: false

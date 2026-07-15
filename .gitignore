@@ -1,0 +1,35 @@
+# --- Python ---
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.eggs/
+build/
+dist/
+.venv/
+venv/
+env/
+
+# --- Superworkflows runtime state ---
+# Durable run state and machine-captured evidence are per-machine, never committed.
+.ai/
+# CodeGraph index is generated tooling state, excluded from freshness/runtime hashes.
+.codegraph/
+
+# --- Tooling / tests ---
+.coverage
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+htmlcov/
+
+# --- Editors / IDE ---
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# --- OS ---
+.DS_Store
+Thumbs.db
+desktop.ini
