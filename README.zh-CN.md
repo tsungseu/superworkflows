@@ -219,8 +219,11 @@ python3 /path/to/plugin-creator/scripts/validate_plugin.py .
 
 ## 许可协议
 
-版权所有 (c) 2026 Tsung Xu。依据 [PolyForm Noncommercial License 1.0.0](LICENSE) 授权。
+版权所有 (c) 2026 Tsung Xu。**双协议授权——二选一：**
 
-**非商用目的**——个人学习、学术研究、评估以及组织内部的非商用研究——的使用、复制、修改和分发均被允许。**任何商用——用于商业优势、作为售卖的产品或服务、产生收入、或企业内部运营使用——必须另行获得商业许可。** 这是 source-available（源码可见）协议，不是 OSI 认证的开源协议。
+- **GNU AGPL-3.0-only**——[`LICENSE`](LICENSE) 中的开源协议。你可以使用、修改和分发本软件（含商用），**前提是：基于本软件构建并通过网络对外提供的任何衍生软件，也必须以 AGPL-3.0 开源**（强 copyleft）。
+- **商业许可**——若无法满足 AGPL-3.0 的要求（例如嵌入闭源/专有产品而不愿开源自有代码），可获取单独的商业许可。
+
+这是双协议（open-core）模式：项目是真正的 OSI 认证开源软件，商业授权为需要闭源自有代码的用户提供 funding 通道。
 
 商业许可条款请在 <https://github.com/tsungseu/superworkflows/issues> 提交 issue，或联系维护者。

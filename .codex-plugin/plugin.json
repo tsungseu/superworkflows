@@ -1,7 +1,7 @@
 {
   "name": "superworkflows",
   "version": "0.2.0+codex.20260715094945",
-  "license": "PolyForm-Noncommercial-1.0.0",
+  "license": "AGPL-3.0-only",
   "description": "Persistent robotics AI Coding Loop Engineering with staged skills, adversarial review, resumable run state, evidence integrity, safety gates, and controlled learning.",
   "author": {
     "name": "xucong"

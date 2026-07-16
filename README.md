@@ -219,8 +219,11 @@ See the [English changelog](CHANGELOG.md) or [Chinese changelog](CHANGELOG.zh-CN
 
 ## License
 
-Copyright (c) 2026 Tsung Xu. Licensed under the [PolyForm Noncommercial License 1.0.0](LICENSE).
+Copyright (c) 2026 Tsung Xu. **Dual-licensed — choose one:**
 
-Use, copying, modification, and distribution for **noncommercial purposes** — personal learning, academic research, evaluation, and noncommercial research within your organization — are permitted. **Commercial use — any use for commercial advantage, in a product or service sold, to generate revenue, or internally by a business in its operations — requires a separate commercial license.** This is a source-available license, not an OSI-approved open-source license.
+- **GNU AGPL-3.0-only** — the open-source license in [`LICENSE`](LICENSE). You may use, modify, and distribute the software, including commercially, **provided that any software you build from it and expose over a network is also released under AGPL-3.0** (strong copyleft).
+- **Commercial license** — for use that cannot comply with AGPL-3.0, for example embedding in a closed-source or proprietary product without open-sourcing your own code, a separate commercial license is available.
+
+This is the dual-license (open-core) model: the project is genuine OSI-approved open source, and commercial licensing funds development for users who need to keep their own code closed.
 
 For commercial-license terms, open an issue at <https://github.com/tsungseu/superworkflows/issues> or contact the maintainer.
