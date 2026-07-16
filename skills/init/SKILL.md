@@ -2,6 +2,24 @@
 name: init
 description: Initialize or audit CodeGraph plus optional persistent .ai run state for a robotics, embodied-AI, robot-runtime, data, control, RL, sim2real, or real-robot repository. Use explicitly when a project needs indexed code exploration, resumable run artifacts, a project profile, or evidence rules.
 ---
+<!--
+Superworkflows - persistent robotics AI Coding Loop Engineering.
+Copyright (c) 2026 Tsung Xu
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU Affero General Public License as
+published by the Free Software Foundation, version 3 of the License.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU Affero General Public License for more details.
+
+You should have received a copy of the GNU Affero General Public License
+along with this program. If not, see <https://www.gnu.org/licenses/>.
+
+Dual-licensed: AGPL-3.0-only OR a separate commercial license.
+-->
 
 # Superworkflows Init
 
@@ -10,7 +28,7 @@ Prepare CodeGraph and optional project-local persistent state. The plugin's bund
 ## Preflight
 
 1. Resolve the repository root and read all applicable `AGENTS.md` files.
-2. Resolve `<plugin-root>` as two directories above this `SKILL.md`, then run `python3 <plugin-root>/scripts/codegraphctl.py prepare --root <repo>` before broad code exploration. Stop if the fail-closed controller cannot produce a healthy, current index.
+2. Resolve `<plugin-root>` as two directories above this `SKILL.md`. Obey repository CodeGraph instructions; prepare an existing index, and initialize a missing one only when this explicit initialization request authorizes it and no stronger rule prohibits it. Stop if an applicable fail-closed controller cannot produce a healthy, current index.
 3. Inspect `.ai/`, `.gitignore`, build and test entry points, CI, deployment scripts, and safety guidance using CodeGraph first where applicable.
 4. Run `python3 <plugin-root>/scripts/loopctl.py bootstrap --root <repo> --dry-run` first.
 5. Report conflicts before writing. Never change `.gitignore` automatically.

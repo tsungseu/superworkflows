@@ -1,3 +1,22 @@
+<!--
+Superworkflows - persistent robotics AI Coding Loop Engineering.
+Copyright (c) 2026 Tsung Xu
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU Affero General Public License as
+published by the Free Software Foundation, version 3 of the License.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU Affero General Public License for more details.
+
+You should have received a copy of the GNU Affero General Public License
+along with this program. If not, see <https://www.gnu.org/licenses/>.
+
+Dual-licensed: AGPL-3.0-only OR a separate commercial license.
+-->
+
 # Portable Robotics AI Coding Loop Engineering
 
 This file is the sole portable workflow protocol for Superworkflows. A repository may provide machine settings in `.ai/project-profile.json`; the profile may strengthen but never silently weaken higher-authority safety or authorization rules. Do not copy this workflow into project repositories.
@@ -20,7 +39,7 @@ observe repository and runtime facts
   -> resume from durable state when interrupted
 ```
 
-Before code exploration, run `python3 <plugin-root>/scripts/codegraphctl.py prepare --root <repo>`. The controller initializes a missing index, incrementally synchronizes source changes, rebuilds incompatible or worktree-mismatched indexes, verifies convergence, and fails closed. Treat `.codegraph/` as generated tooling state and exclude it from workspace, plugin-runtime hashes, and evidence freshness.
+Before code exploration, read repository instructions. On an exact write-capable child route, when `.codegraph/` exists, run `python3 <plugin-root>/scripts/codegraphctl.py prepare --root <repo>`; the controller synchronizes changes, rebuilds incompatible or worktree-mismatched indexes, verifies convergence, and fails closed. Implicit routes, top-level router confirmation, `$status`, and `$review` query an existing healthy index read-only and never prepare or synchronize it. Initialize a missing index only through exact `$init` or equivalent explicit indexing authorization and never against a stronger repository rule. Treat `.codegraph/` as generated tooling state and exclude it from workspace, plugin-runtime hashes, and evidence freshness.
 
 The 14 stages are a human-facing projection. Execution is the state graph in `workflow-spec.json`, including review/remediation back-edges, pause/block/cancel semantics, and external-approval boundaries.
 
@@ -44,14 +63,34 @@ Use one truth source per concern:
 
 Markdown is explanatory evidence, not the machine control plane.
 
+The Skill protocol, trigger assessor, regression suite, and local ledger are auditable orchestration controls, not an operating-system capability boundary. The Codex sandbox, tool approvals, repository permissions, and external-system controls remain responsible for hard isolation. Do not describe prompt compliance alone as machine enforcement.
+
+### Activation, persistence, and authority
+
+Keep three decisions independent:
+
+- **route**: `init`, `status`, `run`, `review`, `release`, `learn`, or none;
+- **persistence**: forbidden, session-only, existing-read-only, confirm, authorized, or required;
+- **authority**: read-only, repository-write, blocked, or pending exact action-scoped approval; report required authority separately from currently available authority.
+
+Only the top-level router may be selected implicitly. Implicit selection is session-only: it may
+read applicable instructions, run the side-effect-free activation assessor, and query an existing
+healthy CodeGraph index read-only, but it must not create `.ai/`, initialize or mutate CodeGraph,
+start/resume a Run, or perform external or hardware actions. Continuation language and title
+similarity never select a Run. Persistent work
+requires explicit `$run`/`$init`; external and hardware work additionally requires `$release`, a
+validated persistent ledger, and exact action-scoped authorization.
+
+Top-level `$superworkflows` is explicit router activation only. Router selection alone never substitutes for exact `$init`, `$run`, `$release`, or `$learn` when the selected child would mutate `.ai/`, CodeGraph, integration state, improvement proposals, or external systems. After an exact `$run` starts a persistent Run, later release and learning stages may proceed from that validated lineage without repeating the child invocation at every internal transition.
+
 ### CodeGraph lifecycle and limits
 
 Use CodeGraph as the structural map, the model as the reasoner, direct source/Git reads as the final source check, and executed build/test/replay/simulation/HIL/robot commands as behavioral evidence.
 
-1. Run `codegraphctl.py prepare` before exploration, planning, review, or source-sensitive release checks.
+1. Read repository instructions first. On exact write-capable child routes, prepare an existing index before exploration, planning, or source-sensitive release checks; initialize only through exact `$init` or equivalent explicit indexing authorization. Implicit routes, router confirmation, `$status`, and `$review` query an existing healthy index read-only and treat a stale index as unavailable.
 2. Let the model formulate and interpret structural questions. Prefer `codegraph_explore`/`codegraph_node` MCP tools when available; otherwise use equivalent CLI `explore`, `node`, `callers`, and `callees` queries.
 3. Use `impact` before finalizing changes to central symbols or contracts.
-4. After every implementation, remediation, or integration write boundary, run `codegraphctl.py sync` before another graph query or review.
+4. After every implementation, remediation, or integration write boundary under exact `$run` or a validated persistent lineage rooted in exact `$run`, run `codegraphctl.py sync` before another graph query or review. On an implicit route or explicit-router confirmation, do not mutate the index; after a source write, stop using graph output and verify from current source/Git.
 5. Use `affected` to propose tests, but never replace project-profile gates or independently executed checks.
 6. Re-read decisive source and current diffs. Never treat graph reachability as runtime correctness or higher-environment evidence.
 
@@ -113,7 +152,7 @@ The main/integration agent is the only run-ledger writer. A delegated assignment
 - attempt, budget, and stop conditions;
 - required result envelope.
 
-Children work in isolated context/worktrees when writing, must not recursively delegate or invoke the router, and return a structured summary. Reviewer identity must be independent from the implementer. A read-only review role never patches what it judges.
+Children start with fresh bounded context, work in isolated worktrees when writing, must not recursively delegate or invoke the router, and return only a structured final result. Reviewer identity must be independent from the implementer. A read-only review role never patches what it judges. The current local ledger records these contracts but cannot cryptographically prove model identity against a same-user process that can replace all local state; do not describe prompt-level role separation as a cryptographic guarantee.
 
 ## 6. Findings and remediation
 
@@ -147,7 +186,7 @@ Plugin installation, skill invocation, historical approval, or a broad request t
 
 Checkpoint after every tool-result boundary that changes engineering truth: stage, evidence, finding, approval, merge, or external-action intent/result. A timeout means `PAUSED`, `BLOCKED`, or retryable failure—not success. Approval waits never default to approval.
 
-Project-profile budgets bound evidence-command runtime, state-route hops, agent attempts, and review/remediation cycles. Exhaustion blocks or forks the run; it never turns into an implicit pass.
+Project-profile budgets bound evidence-command runtime, state-route hops, agent attempts, and review/remediation cycles. The control plane machine-enforces evidence timeout and route hops. Agent-attempt and review-cycle values are orchestration limits until a future dispatch broker atomically binds reservations, actor instances, input digests, context capsules, and result envelopes. Stop at any declared limit; never overstate a soft orchestration limit as hard enforcement. Exhaustion blocks or forks the run and never becomes an implicit pass.
 
 Resume validates schema/plugin compatibility, event integrity, repository identity, current workspace, stale reviewer evidence, open operation intents, and agent contracts. If lineage or authority changed materially, create a child run rather than silently continuing.
 
@@ -161,4 +200,22 @@ run evidence -> candidate -> offline replay/eval -> adversarial review
 -> promote or rollback
 ```
 
-Write candidates only to `.ai/improvements/pending/`. Never auto-edit a production skill, safety gate, or active run. Curate with `active`, `stale`, `superseded`, and `archived`; never auto-delete.
+Mine successful complex work, recovered dead ends, and explicit user corrections, but require multiple observations or mark a one-run candidate provisional. Write candidates only to `.ai/improvements/pending/`; retain structured provenance and digests instead of raw prompts where possible. Never auto-edit a production skill, safety gate, or active run. Curate with `active`, `stale`, `superseded`, and `archived`; never auto-delete.
+
+The following invariants are non-waivable by ordinary learning: repository-instruction precedence,
+no implicit persistent/CodeGraph writes, no implicit external/hardware authority, reviewer
+independence, and stale-evidence fail-closed behavior. A proposed exception requires a named safety
+exception, independent adversarial review, regression tests, canary, rollback, and explicit human
+approval.
+
+## 11. Hermes-derived properties and non-goals
+
+Superworkflows adapts selected properties from the Nous Research Hermes Agent architecture: a small
+stable tool loop, progressive Skill disclosure, fresh isolated subagents, bounded iterations,
+persistent resumable sessions, context preservation before compression, and experience-to-Skill
+learning. Each property is narrowed to robotics engineering authority and evidence semantics.
+
+Non-goals are autonomous Skill mutation, a generic personal-memory system, unrestricted tool loops,
+recursive delegation, provider fallback, messaging gateways, cron, or importing Hermes action
+protocols. Superworkflows keeps proposal-only learning, flat bounded delegation, repository-local
+evidence, independent review, and explicit robot/external authorization.

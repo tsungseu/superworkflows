@@ -2,19 +2,25 @@
 
 [English](README.md) | [简体中文](README.zh-CN.md)
 
-Superworkflows is a persistent Robotics and Embodied-AI Coding Loop Engineering methodology for Codex. It combines explicit skills, specialized `sw-*` agents, durable run state, adversarial review, machine-captured evidence, CodeGraph-assisted exploration, release gates, and approval-controlled learning.
+Superworkflows is a Robotics and Embodied-AI Coding Loop Engineering methodology for Codex. It combines one discoverable top-level router, six explicit stage skills, specialized `sw-*` agents, optional durable run state, adversarial review, machine-captured evidence, conditional CodeGraph-assisted exploration, release gates, and approval-controlled learning.
 
 It is designed for robot runtimes, brain and cerebellum software, locomotion and reinforcement learning, sim2real, real-robot data collection, robotics datasets, and production commissioning where “the code looks right” is not enough.
 
 ## Quickstart
 
-Use the router when you want Superworkflows to select the current stage:
+For a complex robotics request, the router can be discovered from normal language and execute user-requested repository source changes in a session-only workflow without creating persistent workflow state:
+
+```text
+Add model OTA and rollback to this robot runtime, with an adversarial safety review.
+```
+
+Invoke the router explicitly when you want deterministic activation:
 
 ```text
 $superworkflows add model OTA and rollback to this robot runtime
 ```
 
-Or invoke a stage directly:
+Invoke the exact stage directly for persistent initialization, start, or resume:
 
 ```text
 $init initialize CodeGraph and optional persistent run state
@@ -25,15 +31,17 @@ $release assess integration, rollback, and release readiness
 $learn propose reviewed workflow improvements from completed runs
 ```
 
-All seven skills are explicit. Installing the plugin or invoking a skill does not authorize push, PR/MR creation, publishing, deployment, HIL, real-robot execution, or actuation.
+Only `$superworkflows` may be invoked implicitly. The six child skills remain explicit or router-selected. The protocol restricts an implicit route to session-only work and forbids it from mutating or initializing CodeGraph, creating or resuming `.ai` Run state, inferring a Run from title similarity, or treating push, PR/MR creation, publishing, deployment, HIL, real-robot execution, or actuation as authorized. Explicit router invocation is still not an alias for `$init` or `$run`.
 
 ## How It Works
 
-Superworkflows does not treat engineering as one long prompt. It establishes repository truth, writes an explicit contract, challenges the plan, implements within bounded ownership, challenges the implementation, remediates findings, integrates serially, verifies at the highest authorized environment, and records what was actually observed.
+Superworkflows first separates three independent decisions: **route** (which stage fits), **persistence** (session-only or durable Run), and **authority** (local analysis, repository writes, or separately approved external/hardware action). An external-action flag does not overwrite the selected local route, and required authority is reported separately from currently available authority. A side-effect-free activation assessor supports the router with auditable multilingual signals; it does not replace model reasoning or grant authority.
+
+The engineering loop establishes repository truth, writes an explicit contract, challenges the plan, implements within bounded ownership, challenges the implementation, remediates findings, integrates serially, verifies at the highest authorized environment, and records what was actually observed.
 
 For persistent work, the main agent is the sole run-ledger writer. Delegated agents receive a bounded work item, allowed files, required checks, and stop conditions. Reviewers remain independent and read-only. The implementer may mark a finding `FIXED`; only an independent reviewer may mark it `VERIFIED` against current evidence.
 
-Interrupted work resumes from `.ai/runs/<run-id>/` after validating lineage, repository identity, event integrity, workspace freshness, agent contracts, and unresolved external-action intents.
+Persistent work may resume from an exact `.ai/runs/<run-id>/` only after explicit `$run` activation and validation of lineage, repository identity, event integrity, workspace freshness, agent contracts, and unresolved external-action intents. Ambiguous continuation language never selects or resumes a Run automatically.
 
 ## The Basic Workflow
 
@@ -58,13 +66,13 @@ Small, low-risk tasks may collapse stages, but never erase ownership, evidence i
 
 | Skill | Purpose |
 |---|---|
-| `$superworkflows` | Stable router that selects the correct stage and resumes matching runs. |
+| `$superworkflows` | Discoverable router that assesses activation and selects a session-only stage; persistent start or exact-ID resume remains explicit. |
 | `$init` | Prepare CodeGraph and optionally create `.ai/project-profile.json` plus persistent run directories. |
 | `$status` | Read-only run, evidence, finding, approval, integrity, and next-gate inspection. |
 | `$run` | Start or resume implementation, delegation, review, remediation, integration, and verification. |
 | `$review` | Independent adversarial review of plans, diffs, runs, safety claims, and release candidates. |
-| `$release` | Gate serial integration, rollback proof, and separately authorized external or hardware actions. |
-| `$learn` | Produce human-reviewed improvement proposals without self-modifying active workflows. |
+| `$release` | Gate serial integration, rollback proof, and separately authorized external or hardware actions; router selection alone is readiness-only. |
+| `$learn` | Produce human-reviewed improvement proposals; router-selected learning remains response-only without exact or validated persistent provenance. |
 
 ## What’s Inside
 
@@ -90,7 +98,7 @@ python3 scripts/codegraphctl.py sync --root <repo>
 python3 scripts/codegraphctl.py status --root <repo>
 ```
 
-`prepare` initializes a missing index, synchronizes pending changes, rebuilds incompatible or worktree-mismatched indexes, and validates convergence. Run `sync` after implementation, remediation, and integration writes.
+Use CodeGraph only when repository instructions require it, a `.codegraph/` index already exists, or the user explicitly requests initialization. Read repository `AGENTS.md` first. `prepare` can initialize a missing index, synchronize pending changes, rebuild incompatible or worktree-mismatched indexes, and validate convergence. Implicit routes, router confirmation, `$status`, and `$review` only query an existing healthy index; exact write-capable child routes run `prepare`/`sync` as applicable. Source writes make a read-only route's graph view stale.
 
 The model formulates and interprets questions. `codegraph_explore` and `codegraph_node` MCP tools—or equivalent CLI commands—retrieve symbols, source, call paths, impact, and affected tests. Direct source and Git reads remain the final source check; executed build, test, replay, simulation, HIL, and robot commands remain behavioral evidence.
 
@@ -147,13 +155,13 @@ Persistent mode creates:
     └── 10-lessons-learned.md
 ```
 
-The plugin-bundled [`assets/loop-engineering/workflow.md`](assets/loop-engineering/workflow.md) is the sole workflow protocol. Projects do not need, and Superworkflows does not generate or inspect, `.ai/workflow.md` or `.ai/project-profile.md`.
+The plugin-bundled [`assets/loop-engineering/workflow.md`](assets/loop-engineering/workflow.md) is the sole workflow protocol. 
 
-Session-only tasks may run without creating `.ai/`. Persistent machine-captured evidence requires `.ai/project-profile.json`.
+Session-only tasks, including every implicit activation, run without creating `.ai/`. Persistent machine-captured evidence requires explicit persistent activation and `.ai/project-profile.json`.
 
 ## Safety and Authority
 
-Superworkflows separates readiness from execution. These actions require separate, explicit authorization bound to the exact action, target, and commit:
+Superworkflows separates readiness from execution. Under the protocol, implicit activation and declining persistence do not provide external or hardware authority. These actions require separate, explicit authorization bound to the exact action, target, and commit:
 
 - push and PR/MR creation;
 - tag, package, or model publishing;
@@ -190,7 +198,7 @@ Start a new Codex thread after installation or update so the skill catalog and p
 - Codex with local plugin support;
 - Python 3.10 or newer;
 - `tomli>=2.0` on Python 3.10; Python 3.11+ uses only the standard library;
-- CodeGraph CLI for code exploration and synchronization;
+- CodeGraph CLI when the target repository uses CodeGraph;
 - bundled agent models available in the active Codex catalog: `gpt-5.4-mini`, `gpt-5.4`, `gpt-5.5`, and `gpt-5.6-sol`.
 
 ## Updating and Validation
@@ -203,15 +211,21 @@ python3 scripts/sync_agents.py --check
 python3 /path/to/plugin-creator/scripts/validate_plugin.py .
 ```
 
-Update the Codex cachebuster with the plugin-creator helper, re-register the `tsungseu/superworkflows` marketplace (`codex plugin marketplace upgrade`, or `remove` then `add`), and start a new thread. Build metadata such as `0.2.0+codex.<timestamp>` refreshes the local plugin cache without creating a new semantic release.
+Update the Codex cachebuster with the plugin-creator helper, reinstall from the `personal` marketplace, and start a new thread. Build metadata such as `0.2.0+codex.<timestamp>` refreshes the local plugin cache without creating a new semantic release.
 
 See the [English changelog](CHANGELOG.md) or [Chinese changelog](CHANGELOG.zh-CN.md) for release history.
+
+## Hermes-Inspired Optimizations
+
+Superworkflows adopts a small stable loop, progressive skill disclosure, fresh bounded reviewer/worker contexts, resumable state, context compaction through durable evidence, and controlled learning from repeated success, corrections, and dead ends. These ideas are adapted from the official Hermes Agent descriptions of its [architecture](https://hermes-agent.nousresearch.com/docs/developer-guide/architecture), [agent loop](https://hermes-agent.nousresearch.com/docs/developer-guide/agent-loop/), [skills](https://hermes-agent.nousresearch.com/docs/user-guide/features/skills/), [delegation](https://hermes-agent.nousresearch.com/docs/user-guide/features/delegation), [context compression](https://hermes-agent.nousresearch.com/docs/developer-guide/context-compression-and-caching/), and [security](https://hermes-agent.nousresearch.com/docs/user-guide/security).
+
+It intentionally does not import autonomous skill mutation, recursive delegation, generic memory capture, provider fallback, messaging/cron behavior, or unrestricted tool loops. Trigger, persistence, CodeGraph, reviewer-identity, and attempt-budget rules are orchestration and local-control-plane checks on a same-user machine—not OS-level or cryptographic isolation. Hard isolation remains the responsibility of the Codex sandbox, tool approvals, repository permissions, and external systems; hard dispatch enforcement is deferred until a broker can atomically bind reservations, input capsules, results, and identities.
 
 ## Philosophy
 
 - **Evidence over claims** — report only what source and executed checks support.
 - **Independent review over self-certification** — implementers fix; reviewers verify.
-- **Durable state over conversational memory** — interrupted work resumes from validated checkpoints.
+- **Explicit durable state over conversational memory** — authorized persistent work resumes from exact, validated checkpoints.
 - **Bounded ownership over uncontrolled parallelism** — one writer per file, serial integration.
 - **Fail closed over optimistic continuation** — stale evidence, broken indexes, and missing authority block progress.
 - **Higher-environment humility** — never promote lower-environment evidence into a production or real-robot claim.

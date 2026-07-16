@@ -1,8 +1,8 @@
 {
   "name": "superworkflows",
-  "version": "0.2.0+codex.20260715094945",
+  "version": "0.2.5+codex.0.144.0",
   "license": "AGPL-3.0-only",
-  "description": "Persistent robotics AI Coding Loop Engineering with staged skills, adversarial review, resumable run state, evidence integrity, safety gates, and controlled learning.",
+  "description": "Robotics AI Coding Loop Engineering with a discoverable safe router, explicit persistent runs, adversarial review, evidence integrity, safety gates, and controlled learning.",
   "author": {
     "name": "xucong"
   },
@@ -18,8 +18,8 @@
   "skills": "./skills/",
   "interface": {
     "displayName": "Superworkflows",
-    "shortDescription": "Persistent robotics AI Coding Loop Engineering",
-    "longDescription": "Superworkflows runs resumable robotics engineering loops through repository exploration, planning, isolated implementation, adversarial review, remediation, evidence capture, integration, validation, release gating, and approval-controlled learning. It never treats installation or invocation as authorization to push, deploy, publish, or operate a real robot.",
+    "shortDescription": "Safe robotics AI Coding Loop Engineering",
+    "longDescription": "Superworkflows combines a discoverable session-only router with explicit persistent robotics engineering runs through repository exploration, planning, isolated implementation, adversarial review, remediation, evidence capture, integration, validation, release gating, and approval-controlled learning. Its protocol forbids implicit persistent state, Run resume, CodeGraph mutation, and external or robot authority; hard isolation remains with the Codex sandbox, approvals, and system permissions.",
     "developerName": "xucong",
     "category": "Developer Tools",
     "capabilities": [
@@ -27,8 +27,8 @@
       "Write"
     ],
     "defaultPrompt": [
-      "$superworkflows \u2014 route, start, or resume a robotics Loop Engineering task.",
-      "$status \u2014 inspect and validate the active run read-only.",
+      "Describe a complex robotics task for safe session-only workflow routing.",
+      "$run \u2014 explicitly start a persistent robotics loop.",
       "$review \u2014 run an independent adversarial review."
     ]
   }
