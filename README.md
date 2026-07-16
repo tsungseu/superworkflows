@@ -216,3 +216,11 @@ See the [English changelog](CHANGELOG.md) or [Chinese changelog](CHANGELOG.zh-CN
 - **Fail closed over optimistic continuation** — stale evidence, broken indexes, and missing authority block progress.
 - **Higher-environment humility** — never promote lower-environment evidence into a production or real-robot claim.
 - **Learning by proposal, not self-modification** — improvements require review, approval, validation, and rollback.
+
+## License
+
+Copyright (c) 2026 Tsung Xu. Licensed under the [PolyForm Noncommercial License 1.0.0](LICENSE).
+
+Use, copying, modification, and distribution for **noncommercial purposes** — personal learning, academic research, evaluation, and noncommercial research within your organization — are permitted. **Commercial use — any use for commercial advantage, in a product or service sold, to generate revenue, or internally by a business in its operations — requires a separate commercial license.** This is a source-available license, not an OSI-approved open-source license.
+
+For commercial-license terms, open an issue at <https://github.com/tsungseu/superworkflows/issues> or contact the maintainer.

@@ -216,3 +216,11 @@ python3 /path/to/plugin-creator/scripts/validate_plugin.py .
 - **Fail-closed 优先于乐观继续**——陈旧证据、损坏索引和缺失授权都会阻塞流程。
 - **尊重更高环境的证据门槛**——不把低环境证据升级为生产或真机结论。
 - **通过提案学习，而不是自修改**——改进需要审查、审批、验证和回滚。
+
+## 许可协议
+
+版权所有 (c) 2026 Tsung Xu。依据 [PolyForm Noncommercial License 1.0.0](LICENSE) 授权。
+
+**非商用目的**——个人学习、学术研究、评估以及组织内部的非商用研究——的使用、复制、修改和分发均被允许。**任何商用——用于商业优势、作为售卖的产品或服务、产生收入、或企业内部运营使用——必须另行获得商业许可。** 这是 source-available（源码可见）协议，不是 OSI 认证的开源协议。
+
+商业许可条款请在 <https://github.com/tsungseu/superworkflows/issues> 提交 issue，或联系维护者。
