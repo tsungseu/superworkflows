@@ -4,7 +4,28 @@
 
 All notable changes to Superworkflows are documented in this file. The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and semantic release versions exclude the local `+codex.<cachebuster>` build metadata used to refresh the Codex plugin cache.
 
-## [Unreleased]
+## [0.2.5] - 2026-07-16
+
+### Added
+
+- Added a side-effect-free multilingual activation assessor, versioned trigger policy, and positive, negative, ambiguous, and hostile trigger regression corpus.
+- Added orthogonal routing, persistence, and authority decisions so semantic activation cannot imply durable state or external permission.
+- Added negated-action handling and target-aware deployment patterns to reduce both unsafe misses and implementation-task false positives.
+
+### Changed
+
+- Enabled implicit invocation only for the top-level `$superworkflows` router; all six child skills remain explicit or router-selected.
+- Restricted every implicit activation to session-only execution: no `.ai` creation or resume, CodeGraph mutation or initialization, semantic Run selection, or external/hardware action.
+- Adapted Hermes Agent ideas into fresh bounded delegation contexts, progressive skill disclosure, resumable evidence, and controlled learning from repeated success, corrections, and dead ends.
+- Clarified that local reviewer identity and agent/review attempt budgets are orchestration controls, not hard or cryptographic enforcement without a dispatch broker.
+- Preserved route, persistence, current authority, and required external authority as separate outputs; made exact `$init`/`$run` invocation mandatory for persistent mutation even after explicit router activation.
+
+### Security
+
+- Made ambiguous continuation advisory-only and required an explicit `$run` plus exact Run ID for persistent resume.
+- Blocked external and hardware authority on implicit activation or when persistence is declined.
+- Added privacy, provenance, counterexample, canary, rollback, and non-waivable-invariant requirements to learning proposals.
+- Documented that trigger, persistence, CodeGraph, and Skill authority rules are auditable protocol controls rather than an OS capability boundary.
 
 ### Documentation
 

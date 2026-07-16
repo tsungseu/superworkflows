@@ -1,5 +1,5 @@
 {
-  "plugin_version": "0.2.0",
+  "plugin_version": "0.2.5+codex.0.144.0",
   "run_schema_versions": [1],
   "workflow_spec_versions": [1],
   "project_profile_versions": [1],
